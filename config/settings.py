@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+     'pages',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +123,6 @@ STATIC_URL = 'static/'
 
 MAILERS = {
     'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+        'BACKEND': 'django.pages.mail.backends.console.EmailBackend',
     },
 }
