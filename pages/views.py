@@ -1,4 +1,33 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
+import json
+from django.http import JsonResponse, HttpResponseBadRequest
+from django.views.decorators.http import require_POST
+# Create your views here.
 
-def about(request):
-    return HttpResponse("<h1>Курс: Python та Django</h1>")
+def home(request):
+    return HttpResponse("Hello World")
+
+def hello(request):
+    return HttpResponse("Hello")
+
+def article(request, pk):
+    if pk not in {1, 2, 5}:
+        raise Http404("Статтю не знайдено")
+    return HttpResponse(f"Стаття #{pk}")
+
+def greet(request):
+    name = request.GET.get("name", "гость")
+    return  HttpResponse(f"Салам, {name}!")
+
+
+@require_POST
+def echo_json(request):
+    try:
+        data = json.loads(request.body)
+    except (ValueError, UnicodeDecodeError):
+        return HttpResponseBadRequest("Некоректний JSON")
+
+    if not isinstance(data, dict):
+        return HttpResponseBadRequest("Очікується JSON-об'єкт")
+
+    return JsonResponse({"received": data})
