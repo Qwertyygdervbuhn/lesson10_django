@@ -31,3 +31,11 @@ def echo_json(request):
         return HttpResponseBadRequest("Очікується JSON-об'єкт")
 
     return JsonResponse({"received": data})
+from django.http import JsonResponse
+from django.shortcuts import redirect
+def status_demo(request):
+    response = JsonResponse({"ok": True, "count": 3}, status=200)
+    response["X-Lesson"] = "11"
+    return response
+def go_home(request):
+    return redirect("pages:hello")
