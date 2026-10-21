@@ -126,3 +126,4 @@ MAILERS = {
         'BACKEND': 'django.pages.mail.backends.console.EmailBackend',
     },
 }
+
