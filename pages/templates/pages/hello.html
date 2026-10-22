@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <title>Моя перша Django-сторінка</title>
+    <link rel="stylesheet" href="{% static 'pages/style.css' %}">
+</head>
+<body>
+    <h1>Привіт, {{ student_name }}!</h1>
+    <h2>Технології</h2>
+    <ul>
+        {% for technology in technologies %}
+            <li>{{ technology }}</li>
+        {% empty %}
+            <li>Список порожній</li>
+        {% endfor %}
+    </ul>
+    <h2>Коментар користувача</h2>
+    <p id="comment">{{ comment }}</p>
+    <p><a href="{% url 'feedback' %}">Залишити відгук</a></p>
+    <p><a href="{% url 'upload' %}">Завантажити файл</a></p>
+</body>
+</html>

@@ -8,5 +8,7 @@ urlpatterns = [
     path('greet/', views.greet, name='greet'),
     path("api/echo/", views.echo_json, name="echo"),
     path("status/", views.status_demo, name="status"),
-    path("go/", views.go_home,name="go",)
+    path("go/", views.go_home,name="go",),
+    path("feedback/success/", views.feedback_success, name="feedback_success"),
+    path("feedback/", views.feedback, name="feedback"),
 ]
